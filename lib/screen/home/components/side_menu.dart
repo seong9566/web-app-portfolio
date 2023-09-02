@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:web_profile/constants.dart';
+import 'package:web_profile/screen/home/components/skills.dart';
 
-import '../../components/animated_progress_indicator.dart';
 import 'area_info_text.dart';
+import 'coding.dart';
+import 'download_cv.dart';
+import 'knowledge.dart';
 import 'my_info.dart';
 
 class SideMenu extends StatelessWidget {
@@ -12,59 +15,34 @@ class SideMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
+    return const Drawer(
         child: Column(
       children: [
-        const MyInfo(),
+        MyInfo(),
         Expanded(
             child: SingleChildScrollView(
-          padding: const EdgeInsets.all(defaultPadding),
+          padding: EdgeInsets.all(defaultPadding),
           child: Column(
             children: [
-              const AreaInfoText(
+              AreaInfoText(
                 title: "Residence",
                 text: "Korea",
               ),
-              const AreaInfoText(
+              AreaInfoText(
                 title: "City",
                 text: "Seoul",
               ),
-              const AreaInfoText(
+              AreaInfoText(
                 title: "Age",
                 text: "25",
               ),
-              const Divider(),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: defaultPadding),
-                child: Text(
-                  "Skills",
-                  style: Theme.of(context).textTheme.titleSmall,
-                ),
-              ),
-              const Row(
-                children: [
-                  Expanded(
-                    child: AnimatedCircularProgressIndicator(
-                      percentage: 0.8,
-                      label: "Flutter",
-                    ),
-                  ),
-                  SizedBox(width: defaultPadding),
-                  Expanded(
-                    child: AnimatedCircularProgressIndicator(
-                      percentage: 0.3,
-                      label: "Spring Boot",
-                    ),
-                  ),
-                  SizedBox(width: defaultPadding),
-                  Expanded(
-                    child: AnimatedCircularProgressIndicator(
-                      percentage: 0.3,
-                      label: "Firebase",
-                    ),
-                  ),
-                ],
-              ),
+              Skills(),
+              SizedBox(height: defaultPadding),
+              Coding(),
+              Knowledge(),
+              Divider(),
+              SizedBox(height: defaultPadding / 2),
+              DownloadCV(),
             ],
           ),
         ))
