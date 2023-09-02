@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:web_profile/constants.dart';
 
+import 'components/side_menu.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -12,10 +14,10 @@ class HomeScreen extends StatelessWidget {
           constraints: const BoxConstraints(maxWidth: maxWidth),
           child: Row(
             children: [
-              Expanded(
+              const Expanded(
                 // 2/9 = 0.22 , 22%의 공간을 차지.
                 flex: 2, // 전체 공간의 2
-                child: Container(color: Colors.white),
+                child: SideMenu(),
               ),
               Expanded(
                 flex: 7, // 전체 공간의 7
