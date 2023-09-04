@@ -30,7 +30,7 @@ class HomeBanner extends StatelessWidget {
               children: [
                 Text(
                   "Discover my Amazing \nArt Space!",
-                  style: Responsive.isDesktop(context)
+                  style: Responsive.isDesktop(context) // Desktop(1024)일 경우 displaySmall
                       ? Theme.of(context).textTheme.displaySmall!.copyWith(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -40,19 +40,21 @@ class HomeBanner extends StatelessWidget {
                             color: Colors.white,
                           ),
                 ),
+                if (Responsive.isMobileLarge(context)) const SizedBox(height: defaultPadding / 2), // Mobile(500) 보다 작다면
                 const MyBuildAnimatedText(),
                 const SizedBox(height: defaultPadding),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: defaultPadding * 2,
-                      vertical: defaultPadding,
+                if (!Responsive.isMobileLarge(context)) // LargeMobile(700) 보다 작으면 Button off
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: defaultPadding * 2,
+                        vertical: defaultPadding,
+                      ),
+                      backgroundColor: primaryColor,
                     ),
-                    backgroundColor: primaryColor,
+                    child: const Text("EXPLORE NOW"),
                   ),
-                  child: const Text("EXPLORE NOW"),
-                ),
               ],
             ),
           )
@@ -74,8 +76,8 @@ class MyBuildAnimatedText extends StatelessWidget {
       style: Theme.of(context).textTheme.titleMedium!,
       child: Row(
         children: [
-          const FlutterCodeText(),
-          const SizedBox(width: defaultPadding / 2),
+          if (!Responsive.isMobileLarge(context)) const FlutterCodeText(),
+          if (!Responsive.isMobileLarge(context)) const SizedBox(width: defaultPadding / 2),
           const Text("I build "),
           AnimatedTextKit(
             animatedTexts: [
@@ -87,8 +89,8 @@ class MyBuildAnimatedText extends StatelessWidget {
               TyperAnimatedText("Chat app with dark and light theme."),
             ],
           ),
-          const SizedBox(width: defaultPadding / 2),
-          const FlutterCodeText(),
+          if (!Responsive.isMobileLarge(context)) const SizedBox(width: defaultPadding / 2),
+          if (!Responsive.isMobileLarge(context)) const FlutterCodeText(),
         ],
       ),
     );
