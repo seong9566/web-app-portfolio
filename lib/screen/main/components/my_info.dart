@@ -16,7 +16,7 @@ class MyInfo extends StatelessWidget {
             const Spacer(),
             const CircleAvatar(
               radius: 50,
-              backgroundImage: AssetImage("assets/images/IMG_7344.jpg"),
+              backgroundImage: AssetImage("assets/images/profile.jpg"),
             ),
             const Spacer(),
             Text(
@@ -24,7 +24,7 @@ class MyInfo extends StatelessWidget {
               style: Theme.of(context).textTheme.titleSmall,
             ),
             const Text(
-              "Flutter Developer \n the Flutter Way",
+              "Mobile Developer \nFlutter Developer",
               style: TextStyle(
                 fontWeight: FontWeight.w200,
                 height: 1.5,
