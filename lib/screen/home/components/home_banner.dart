@@ -12,7 +12,7 @@ class HomeBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 3, // 가로 3, 세로1 비율
+      aspectRatio: Responsive.isMobile(context) ? 2.5 : 3,
       child: Stack(
         fit: StackFit.expand, // 자식 위젯을 화면에 꽉 채움.
         children: [
@@ -74,25 +74,37 @@ class MyBuildAnimatedText extends StatelessWidget {
     return DefaultTextStyle(
       //아래 Text들을 모두 일정한 style 설정 해준다.
       style: Theme.of(context).textTheme.titleMedium!,
+      maxLines: 1,
       child: Row(
         children: [
           if (!Responsive.isMobileLarge(context)) const FlutterCodeText(),
           if (!Responsive.isMobileLarge(context)) const SizedBox(width: defaultPadding / 2),
           const Text("I build "),
-          AnimatedTextKit(
-            animatedTexts: [
-              TyperAnimatedText(
-                "responsive web and mobile app",
-                speed: const Duration(microseconds: 60),
-              ),
-              TyperAnimatedText("complete e-Commerce app UI."),
-              TyperAnimatedText("Chat app with dark and light theme."),
-            ],
-          ),
+          Responsive.isMobile(context) ? const Expanded(child: AnimatedText()) : const AnimatedText(),
           if (!Responsive.isMobileLarge(context)) const SizedBox(width: defaultPadding / 2),
           if (!Responsive.isMobileLarge(context)) const FlutterCodeText(),
         ],
       ),
+    );
+  }
+}
+
+class AnimatedText extends StatelessWidget {
+  const AnimatedText({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedTextKit(
+      animatedTexts: [
+        TyperAnimatedText(
+          "responsive web and mobile app",
+          speed: const Duration(microseconds: 60),
+        ),
+        TyperAnimatedText("complete e-Commerce app UI."),
+        TyperAnimatedText("Chat app with dark and light theme."),
+      ],
     );
   }
 }

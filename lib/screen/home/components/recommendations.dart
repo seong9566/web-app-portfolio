@@ -12,7 +12,10 @@ class Recommendations extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: defaultPadding),
+      padding: const EdgeInsets.symmetric(
+        vertical: defaultPadding,
+        horizontal: defaultPadding,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
