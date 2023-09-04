@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:web_profile/constants.dart';
-import 'package:web_profile/screen/home/components/skills.dart';
+import 'package:web_profile/screen/main/components/skills.dart';
 
 import 'area_info_text.dart';
 import 'coding.dart';
