@@ -3,7 +3,7 @@ import 'package:web_profile/screen/main/main_screen.dart';
 
 import 'components/heigh_light_info.dart';
 import 'components/home_banner.dart';
-import 'components/my_project.dart';
+import 'components/my_projects.dart';
 import 'components/recommendations.dart';
 
 class HomeScreen extends StatelessWidget {
